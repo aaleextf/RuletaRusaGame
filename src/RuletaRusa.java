@@ -20,6 +20,7 @@ public class RuletaRusa {
 
         int totalJugadores;
 
+        //Creamos un bucle para que si ponemos datos incorrectos no nos deje seguir.
         while (true) {
             System.out.println("------------------------------------------------------------");
             System.out.println("Bienvenido, ¿cuántos jugadores vais a participar? (De 2 a 4)");
@@ -34,6 +35,7 @@ public class RuletaRusa {
                 System.out.println("Cantidad no válida. Deben participar entre 2 y 4 jugadores. Pruébalo de nuevo:");
             }
         }
+        //Constante del total de vidas
         final int TOTALVIDAS = 3;
 
         // Creamos los arrays de jugadores y sus respectivas vidas.
@@ -48,6 +50,7 @@ public class RuletaRusa {
                                                      // que si hay 3 jugadores el bucle se repite 3 veces para cada
                                                      // jugador.
 
+            //Este bucle es para que nos introduzca un nombre valido y no lo deje en blanco
             do {
                 System.out.println("----------------------------------------------");
                 System.out.println("Introduce el nombre del jugador " + (i + 1) + ": ");
@@ -113,6 +116,7 @@ public class RuletaRusa {
             if (accion1 == 1) {
                 int disparar;
                
+                //Con este bucle lo que hacemos es que mientras no pongamos un jugador acorde a la partida no nos deja avanzar
                 while (true) { 
                     System.out.println("\nIndica el número del jugador al que quieres disparar:");
                     // Este bucle nos muestra cada jugador con sus vidas.
@@ -127,11 +131,7 @@ public class RuletaRusa {
                         break;
                 }
                     
-                    
                 
-
-                
-
                 int aleatorioBala = random.nextInt(2);
                 boolean esBalaReal = (aleatorioBala == 1);
 
