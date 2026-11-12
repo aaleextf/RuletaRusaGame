@@ -3,6 +3,7 @@ Autor: Alexandru Tofan
 Fecha: 21/10/2026
 Descripción: Vamos a crear un juego basado en Buckshot Roulette,
 empleando todo lo aprendido durante el curso y mejorándolo a medida que avanzamos.
+Nombres en blanco, comprobacion de letras dudas profe
 */
 
 import java.util.Arrays;
@@ -46,10 +47,21 @@ public class RuletaRusa {
         for (int i = 0; i < jugadores.length; i++) { // Recorre el bucle por los jugadores que le introducimos, es decir
                                                      // que si hay 3 jugadores el bucle se repite 3 veces para cada
                                                      // jugador.
-            System.out.println("----------------------------------------------");
-            System.out.println("Introduce el nombre del jugador " + (i + 1) + ": ");
-            System.out.println("----------------------------------------------");
-            jugadores[i] = scanner.nextLine();
+
+            do {
+                System.out.println("----------------------------------------------");
+                System.out.println("Introduce el nombre del jugador " + (i + 1) + ": ");
+                System.out.println("----------------------------------------------");
+                jugadores[i] = scanner.nextLine();
+
+                if (jugadores[i].isEmpty()) {
+                    System.out.println("Introduce un nombre valido");
+                }
+            }while (jugadores[i].isEmpty());
+                
+
+
+
         }
         // Nos imprime los jugadores de la partida.
         System.out.println("--------------------------------");
@@ -94,18 +106,31 @@ public class RuletaRusa {
 
             int accion1 = scanner.nextInt();
             scanner.nextLine();
+ 
 
             // Esto nos permite realizar una accion, es decir que si introducimos "1"
             // disparamos a alguien y si ponemos "2" pasamos turno.
             if (accion1 == 1) {
-                System.out.println("\nIndica el número del jugador al que quieres disparar:");
-                // Este bucle nos muestra cada jugador con sus vidas.
-                for (int i = 0; i < jugadores.length; i++) {
-                    System.out.println((i + 1) + ". " + jugadores[i] + " [Vidas: " + vidasJugadores[i] + "]");
+                int disparar;
+               
+                while (true) { 
+                    System.out.println("\nIndica el número del jugador al que quieres disparar:");
+                    // Este bucle nos muestra cada jugador con sus vidas.
+                    for (int i = 0; i < jugadores.length; i++) {
+                        System.out.println((i+1) + ". " + jugadores[i] + " [Vidas: " + vidasJugadores[i] + "]");
+                    }
+                    disparar = scanner.nextInt() - 1;
+                    
+                    if (disparar < 0 || disparar > jugadores.length-1) {
+                        System.out.println("Introduce un jugador válido.");
+                    }else
+                        break;
                 }
+                    
+                    
+                
 
-                int disparar = scanner.nextInt() - 1;
-                scanner.nextLine();
+                
 
                 int aleatorioBala = random.nextInt(2);
                 boolean esBalaReal = (aleatorioBala == 1);
